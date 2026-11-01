@@ -9,6 +9,9 @@ struct Student
     char dream[50];
 };
 
+void Read_input(struct Student S[], int size);
+void Display_output(struct Student S[], int size);
+
 int main()
 {
     int count;
@@ -16,7 +19,13 @@ int main()
     printf("Enter the Student Count:");
     scanf("%d", &count);
 
-    struct Student S[count];
+    struct Student S[100];
+
+    if(count <= 0 || count > 100)
+    {
+        printf("Invalid student count!");
+        return 0;
+    }
 
     Read_input(S, count);
     Display_output(S, count);
@@ -36,16 +45,16 @@ void Read_input(struct Student S[], int size)
         scanf("%d", &S[i].roll_number);
 
         printf("Enter the name:");
-        scanf("%s", S[i].name);
+        scanf("%49s", S[i].name);
 
         printf("Enter the cutoff:");
         scanf("%f", &S[i].cut_off);
 
         printf("Enter the city:");
-        scanf("%s", S[i].city);
+        scanf("%49s", S[i].city);
 
         printf("Enter the dream:");
-        scanf("%s", S[i].dream);
+        scanf("%49s", S[i].dream);
 
         counter++;
     }
